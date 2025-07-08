@@ -9,7 +9,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/heads/feature/')
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 21
