@@ -79,7 +79,7 @@ public class TicTacToe
         }
     }
 
-    private void switchCurrentPlayer()
+    public void switchCurrentPlayer()
     {
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
     }
