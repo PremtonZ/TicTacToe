@@ -20,21 +20,20 @@ public class Board {
 
     public boolean isFull()
     {
-        for (int i = 0; i < 3; i++)
+        for (char[] row : cells)
         {
-            for (int a = 0; a < 3; a++)
+            for (char val : row)
             {
-                if (cells[i][a] == ' ') return false;
+                if (val == ' ') return false;
             }
         }
-
         return true;
     }
 
     public void clear() {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < cells.length; i++)
         {
-            for (int a = 0; a < 3; a++)
+            for (int a = 0; a < cells[i].length; a++)
             {
                 cells[i][a] = ' ';
             }
@@ -44,11 +43,11 @@ public class Board {
     public void print() {
         System.out.println("-------");
 
-        for (int i = 0; i < 3; i++) {
+        for (char[] row : cells) {
             System.out.print("|");
 
-            for (int a = 0; a < 3; a++) {
-                System.out.print(cells[i][a] == ' ' ? " " : cells[i][a]);
+            for (char val : row) {
+                System.out.print(val);
                 System.out.print("|");
             }
 

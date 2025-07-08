@@ -89,7 +89,7 @@ public class TicTacToe
         char marker = currentPlayer.getMarker();
         char[][] cells = board.cells;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < cells.length; i++)
         {
             if ((cells[i][0] == marker && cells[i][1] == marker && cells[i][2] == marker) || (cells[0][i] == marker && cells[1][i] == marker && cells[2][i] == marker))
             {
