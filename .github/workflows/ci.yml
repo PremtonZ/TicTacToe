@@ -3,13 +3,12 @@ name: Java CI
 on:
   push:
     branches:
-      - 'feature/**'
+      - 'feature'
       - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/heads/feature/')
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 21
@@ -19,6 +18,7 @@ jobs:
           java-version: '21'
       - name: Build with Maven
         run: mvn -B test
+        working-directory: Tictactoe
 
   build-and-upload-jar:
     runs-on: ubuntu-latest
@@ -32,8 +32,9 @@ jobs:
           java-version: '21'
       - name: Build JAR
         run: mvn -B package
+        working-directory: Tictactoe
       - name: Upload JAR as artifact
         uses: actions/upload-artifact@v4
         with:
           name: tictactoe-jar
-          path: target/*.jar 
+          path: Tictactoe/target/*.jar 
