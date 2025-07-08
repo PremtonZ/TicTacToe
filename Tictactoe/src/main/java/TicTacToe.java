@@ -61,7 +61,20 @@ public class TicTacToe
             System.out.println();
 
             board.place(row, col, currentPlayer.getMarker());
-            board.print();
+
+            if (hasWinner())
+            {
+                board.print();
+                System.out.println("Player " + currentPlayer.getMarker() + " wins!");
+                break;
+            }
+            else if (board.isFull())
+            {
+                board.print();
+                System.out.println("It's a draw!");
+                break;
+            }
+
             switchCurrentPlayer();
         }
     }
@@ -69,5 +82,26 @@ public class TicTacToe
     private void switchCurrentPlayer()
     {
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
+    }
+
+    private boolean hasWinner()
+    {
+        char marker = currentPlayer.getMarker();
+        char[][] cells = board.cells;
+
+        for (int i = 0; i < cells.length; i++)
+        {
+            if ((cells[i][0] == marker && cells[i][1] == marker && cells[i][2] == marker) || (cells[0][i] == marker && cells[1][i] == marker && cells[2][i] == marker))
+            {
+                return true;
+            }
+        }
+
+        if ((cells[0][0] == marker && cells[1][1] == marker && cells[2][2] == marker) || (cells[0][2] == marker && cells[1][1] == marker && cells[2][0] == marker))
+        {
+            return true;
+        }
+
+        return false;
     }
 } 
