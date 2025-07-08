@@ -19,6 +19,7 @@ jobs:
           java-version: '21'
       - name: Build with Maven
         run: mvn -B test
+        working-directory: Tictactoe
 
   build-and-upload-jar:
     runs-on: ubuntu-latest
@@ -32,6 +33,7 @@ jobs:
           java-version: '21'
       - name: Build JAR
         run: mvn -B package
+        working-directory: Tictactoe
       - name: Upload JAR as artifact
         uses: actions/upload-artifact@v4
         with:
